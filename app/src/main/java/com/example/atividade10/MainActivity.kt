@@ -26,6 +26,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.atividade10.ui.theme.Atividade10Theme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +48,11 @@ class MainActivity : ComponentActivity() {
 fun Form() {
 
     //Variáveis:
-    var nome = ""
-    var telefone = ""
-    var endereco = ""
-    var cep = ""
-    var bairro = ""
+    var nome: String = ""
+    var telefone: String = ""
+    var endereco: String = ""
+    var cep: String = ""
+    var bairro: String = ""
 
     //Coluna:
     Column(
@@ -66,11 +67,7 @@ fun Form() {
         ){
 
             //Título do app:
-            Text(
-                text = "Formulário",
-                fontSize = 25.sp,
-                modifier = Modifier.padding(10.dp)
-            )
+            Text(text = "Formulário", fontSize = 25.sp, modifier = Modifier.padding(10.dp))
         }
 
         // Espaçamento vertical:
