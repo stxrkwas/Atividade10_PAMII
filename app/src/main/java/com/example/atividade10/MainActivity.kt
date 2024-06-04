@@ -25,35 +25,28 @@ import androidx.compose.ui.unit.sp
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.room.jarjarred.org.antlr.v4.runtime.misc.MurmurHash.finish
 import com.example.atividade10.ui.theme.Atividade10Theme
 
 
 class MainActivity : ComponentActivity() {
-
-    private lateinit var bindingb: ActivityMainBinding
-    private lateinit var db: FormDatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContent(binding.root){
+        setContent() {
             Atividade10Theme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Form()
-                    db= FormDatabaseHelper(this)
-                    binding.button.setOnClickListener {
-                        val nome = binding.nome.text.toString()
-                        val telefone = binding.telefone.text.toString()
-                        val endereco = binding.endereco.text.toString()
-                        val cep = binding.cep.text.toString()
-                        val bairro = binding.bairro.text.toString()
-                        val form = Form(nome, telefone, endereco, cep, bairro)
-                        db.insertForm(form)
-                        finish()
-                        Toast.makeText(this, "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                    Formulario { nome, telefone, endereco, cep, bairro ->
+                        Toast.makeText(
+                            this,
+                            "Data: $nome, $telefone, $endereco, $cep, $bairro",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -62,26 +55,26 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Form() {
-
-    /*Variáveis:
-    var nome: String
-    var telefone: String
-    var endereco: String
-    var cep: String
-    var bairro: String*/
+fun Formulario(
+    onFormSubmit: (String, String, String, String, String) -> Unit
+) {
+    var nome = remember { mutableStateOf("") } // Store form data in composable state
+    var telefone = remember { mutableStateOf("") }
+    var endereco = remember { mutableStateOf("") }
+    var cep = remember { mutableStateOf("") }
+    var bairro = remember { mutableStateOf("") }
 
     //Coluna:
     Column(
         Modifier.fillMaxWidth(),
         Arrangement.Center
-    ){
+    ) {
 
         //1ª linha:
         Row(
             Modifier.fillMaxWidth(),
             Arrangement.Center
-        ){
+        ) {
 
             //Título do app:
             Text(text = "Formulário", fontSize = 25.sp, modifier = Modifier.padding(10.dp))
@@ -94,12 +87,12 @@ fun Form() {
         Row(
             Modifier.fillMaxWidth(),
             Arrangement.Center
-        ){
+        ) {
 
             //Campo de texto para o nome:
             TextField(
-                value = "nome",
-                label = {Text("Digite o seu nome")}
+                value = nome,
+                label = { Text("Digite o seu nome") }
             )
         }
 
@@ -110,11 +103,11 @@ fun Form() {
         Row(
             Modifier.fillMaxWidth(),
             Arrangement.Center
-        ){
+        ) {
 
             //Campo de texto para o telefone:
             TextField(
-                value = "telefone",
+                value = telefone,
                 label = { Text("Informe seu telefone") }
             )
         }
@@ -126,7 +119,7 @@ fun Form() {
         Row(
             Modifier.fillMaxWidth(),
             Arrangement.Center
-        ){
+        ) {
 
             //Campo de texto para o endereço:
             TextField(
@@ -142,12 +135,12 @@ fun Form() {
         Row(
             Modifier.fillMaxWidth(),
             Arrangement.Center
-        ){
+        ) {
 
             //Campo de texto para o CEP:
             TextField(
                 value = "cep",
-                label = { Text("Digite o seu CEP") },
+                label = { Text(text = "Digite o seu CEP") },
             )
         }
 
@@ -158,12 +151,12 @@ fun Form() {
         Row(
             Modifier.fillMaxWidth(),
             Arrangement.Center
-        ){
+        ) {
 
             //Campo de texto para o bairro:
             TextField(
                 value = "bairro",
-                label = { Text("Informe qual é o seu bairro") },
+                label = { Text(text = "Informe qual é o seu bairro") },
             )
         }
 
@@ -174,20 +167,41 @@ fun Form() {
         Row(
             Modifier.fillMaxWidth(),
             Arrangement.Center
-        ){
+        ) {
 
             //Botão de cadastro:
-            Button(onClick = {}){
+            Button(
+                onClick = {
+                    val formValues = Form( // Create a Form object with entered data
+                        nome.value,
+                        telefone.value,
+                        endereco.value,
+                        cep.value,
+                        bairro.value
+                    )
+
+                    onFormSubmit( // Call the provided function to handle submission
+                        formValues.nome,
+                        formValues.telefone,
+                        formValues.endereco,
+                        formValues.cep,
+                        formValues.bairro
+                    )
+
+                    Toast.makeText(this@MainActivity, "Cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                        .show()
+                    finish()
+
+                }) {
                 Text(text = "Cadastrar")
             }
         }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Atividade10Theme {
-        Form()
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        Atividade10Theme {
+            Formulario()
+        }
     }
-}
