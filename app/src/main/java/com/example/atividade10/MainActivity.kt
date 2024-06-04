@@ -24,20 +24,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast
 import com.example.atividade10.ui.theme.Atividade10Theme
 
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var bindingb: ActivityMainBinding
+    private lateinit var db: FormDatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContent {
+        setContent(binding.root){
             Atividade10Theme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Form()
+                    db= FormDatabaseHelper(this)
+                    binding.button.setOnClickListener {
+                        val nome = binding.nome.text.toString()
+                        val telefone = binding.telefone.text.toString()
+                        val endereco = binding.endereco.text.toString()
+                        val cep = binding.cep.text.toString()
+                        val bairro = binding.bairro.text.toString()
+                        val form = Form(nome, telefone, endereco, cep, bairro)
+                        db.insertForm(form)
+                        finish()
+                        Toast.makeText(this, "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
@@ -47,12 +64,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Form() {
 
-    //Variáveis:
-    var nome: String = ""
-    var telefone: String = ""
-    var endereco: String = ""
-    var cep: String = ""
-    var bairro: String = ""
+    /*Variáveis:
+    var nome: String
+    var telefone: String
+    var endereco: String
+    var cep: String
+    var bairro: String*/
 
     //Coluna:
     Column(
@@ -81,8 +98,8 @@ fun Form() {
 
             //Campo de texto para o nome:
             TextField(
-                value = nome,
-                label = { Text("Digite o seu nome") },
+                value = "nome",
+                label = {Text("Digite o seu nome")}
             )
         }
 
@@ -97,8 +114,8 @@ fun Form() {
 
             //Campo de texto para o telefone:
             TextField(
-                value = telefone,
-                label = { Text("Informe seu telefone") },
+                value = "telefone",
+                label = { Text("Informe seu telefone") }
             )
         }
 
@@ -113,7 +130,7 @@ fun Form() {
 
             //Campo de texto para o endereço:
             TextField(
-                value = endereco,
+                value = "endereco",
                 label = { Text("Digite o seu endereço") },
             )
         }
@@ -129,7 +146,7 @@ fun Form() {
 
             //Campo de texto para o CEP:
             TextField(
-                value = cep,
+                value = "cep",
                 label = { Text("Digite o seu CEP") },
             )
         }
@@ -145,7 +162,7 @@ fun Form() {
 
             //Campo de texto para o bairro:
             TextField(
-                value = endereco,
+                value = "bairro",
                 label = { Text("Informe qual é o seu bairro") },
             )
         }
