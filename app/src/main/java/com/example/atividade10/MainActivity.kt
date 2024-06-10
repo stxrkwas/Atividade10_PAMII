@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
+/*@Composable
 fun Formulario(
     onFormSubmit: (String, String, String, String, String) -> Unit
 ) {
@@ -220,4 +220,4 @@ fun Formulario(
         Atividade10Theme {
             Formulario()
         }
-    }
+    }*/
