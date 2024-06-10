@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.widget.Button
+import androidx.widget.EditText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,22 +37,36 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent() {
-            Atividade10Theme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Formulario { nome, telefone, endereco, cep, bairro ->
-                        Toast.makeText(
-                            this,
-                            "Data: $nome, $telefone, $endereco, $cep, $bairro",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
+
+        // Define o layout da interface do usuário
+        setContentView(R.layout.activity_main)
+
+        // Criando variáveis vinculadas aos atributos dos parâmetros enviados dos textos que serão inseridos nos campos de texto:
+
+        // 'findViewById' vincula um elemento a uma variável
+        // 'EditText' permite que o usuário insira e edite um texto
+        val edtNome: EditText = findViewbyId(R.id.edtNome)
+        val edtTelefone: EditText = findViewbyId(R.id.edtTelefone)
+        val edtEndereco: EditText = findViewbyId(R.id.edtEndereco)
+        val edtCep: EditText = findViewbyId(R.id.edtCep)
+
+        // Botão para cadastrar os dados inseridos nos campos de texto
+        val btnCadastrar: Button = findViewById(R.id.btnCadastrar)
+
+        // Método para cadastrar os dados no banco, assim que o botão for clicado
+        btnCadastrar.setOnClickListener{
+            val intent = Intent(this, RespostaActivity::class.java)
+            intent.putExtra("nome", edtNome.text.toString())
+            intent.putExtra("telefone", edtTelefone.text.toString())
+            intent.putExtra("endereco", edtEndereco.text.toString())
+            intent.putExtra("cep", edtCep.text.toString())
+            intent.putExtra("bairro", edtBairro.text.toString())
+
+            // Inicia uma atividade
+            startActivity(intent)
         }
+        
+        
     }
 }
 
