@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical">
+
+    <!-- Título da tela: -->
+    <TextView
+        android:id="@+id/txtResposta"
+        android:layout_width="370dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/poppins_bold"
+        android:foregroundTint="#000000"
+        android:text="Confirmação dos Dados"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <!-- Titulo do campo Nome-->
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="Nome:"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    <!-- Campo para inserir o nome-->
+    <EditText
+        android:id="@+id/edtNome"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:background="@color/new_purple"
+        android:fontFamily="@font/poppins"
+        android:inputType="text"
+        android:textSize="25sp" />
+
+    <!-- Titulo do campo Telefone-->
+    <TextView
+        android:id="@+id/txtTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="Telefone:"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    <!-- Campo para inserir o telefone-->
+    <EditText
+        android:id="@+id/edtTelefone"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:background="@color/new_purple"
+        android:fontFamily="@font/poppins"
+        android:inputType="text"
+        android:textSize="20sp" />
+
+    <!-- Titulo do campo Endereço-->
+    <TextView
+        android:id="@+id/txtEndereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="Telefone:"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    <!-- Campo para inserir o telefone-->
+    <EditText
+        android:id="@+id/edtEndereco"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:background="@color/new_purple"
+        android:fontFamily="@font/poppins"
+        android:inputType="text"
+        android:textSize="20sp" />
+
+    <!-- Titulo do campo CEP-->
+    <TextView
+        android:id="@+id/txtCEP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="CEP:"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    <!-- Campo para inserir o CEP-->
+    <EditText
+        android:id="@+id/edtCEP"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:background="@color/new_purple"
+        android:fontFamily="@font/poppins"
+        android:inputType="text"
+        android:textSize="20sp" />
+
+    <!-- Titulo do campo Bairro-->
+    <TextView
+        android:id="@+id/txtBairro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="Bairro:"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    <!-- Campo para inserir o bairro-->
+    <EditText
+        android:id="@+id/edtBairro"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:background="@color/new_purple"
+        android:fontFamily="@font/poppins"
+        android:inputType="text"
+        android:textSize="20sp" />
+
+    <!-- Botão de confirmação-->
+    <Button
+        android:id="@+id/btnConfirmar"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="@color/new_green"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Cadastrar"
+        android:textAllCaps="false"
+        android:textSize="25sp" />
+</LinearLayout>

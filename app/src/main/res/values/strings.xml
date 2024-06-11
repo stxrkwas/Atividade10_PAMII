@@ -1,3 +1,30 @@
 <resources>
+
+    <!-- String que nomeia o app-->
     <string name="app_name">Atividade10</string>
+
+    <!-- Título do campo Nome-->
+    <string name="txtNome">Nome:</string>
+
+    <!-- Título do campo Telefone-->
+    <string name="txtTelefone">Telefone:</string>
+
+    <!-- Título do campo Endereço-->
+    <string name="txtEndereco">Endereço:</string>
+
+    <!-- Título do campo CEP-->
+    <string name="txtCEP">CEP:</string>
+
+    <!-- Título do campo Bairro-->
+    <string name="txtBairro">Bairro:</string>
+
+    <!-- Título do campo Resposta-->
+    <string name="txtResposta">Confirmação dos Dados</string>
+
+    <!--  Título do campo Botão Cadastrar-->
+    <string name="btnCadastrar">Cadastrar</string>
+
+    <!-- Título do campo Botão Confirmar-->
+    <string name="btnConfirmar">Confirmar</string>
+
 </resources>

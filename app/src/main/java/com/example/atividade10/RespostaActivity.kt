@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import com.example.atividade10.R
 import com.example.atividade10.db.DBHelper
 class RespostaActivity: AppCompatActivity() {
@@ -17,14 +18,14 @@ class RespostaActivity: AppCompatActivity() {
 
         // 'findViewById' vincula um elemento a uma variável
         // 'EditText' permite que o usuário insira e edite um texto
-        val edtNome: EditText = findViewbyId(R.id.edtNome)
-        val edtTelefone: EditText = findViewbyId(R.id.edtTelefone)
-        val edtEndereco: EditText = findViewbyId(R.id.edtEndereco)
-        val edtCep: EditText = findViewbyId(R.id.edtCep)
+        val edtNome: EditText = findViewById(R.id.edtNome)
+        val edtTelefone: EditText = findViewById(R.id.edtTelefone)
+        val edtEndereco: EditText = findViewById(R.id.edtEndereco)
+        val edtCep: EditText = findViewById(R.id.edtCEP)
         val edtBairro: EditText = findViewById(R.id.edtBairro)
 
         // Botão para cadastrar os dados inseridos nos campos de texto
-        val btnCadastrar: Button = findViewById(R.id.btnConfirmar)
+        val btnConfirmar: Button = findViewById(R.id.btnConfirmar)
 
         edtNome.setText(intent.getStringExtra("nome"))
         edtTelefone.setText(intent.getStringExtra("telefone"))
@@ -34,7 +35,7 @@ class RespostaActivity: AppCompatActivity() {
 
         val db = DBHelper(this, null)
 
-        btnCadastrar.setOnClickListener{
+        btnConfirmar.setOnClickListener{
             db.addPessoa(edtNome.text.toString(), edtTelefone.text.toString(), edtEndereco.text.toString(), edtCep.text.toString(), edtBairro.text.toString())
             finish()
         }

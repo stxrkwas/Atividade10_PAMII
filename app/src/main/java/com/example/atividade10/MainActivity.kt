@@ -46,14 +46,14 @@ class MainActivity : ComponentActivity() {
 
         // 'findViewById' vincula um elemento a uma variável
         // 'EditText' permite que o usuário insira e edite um texto
-        val edtNome: EditText = findViewbyId(R.id.edtNome)
-        val edtTelefone: EditText = findViewbyId(R.id.edtTelefone)
-        val edtEndereco: EditText = findViewbyId(R.id.edtEndereco)
-        val edtCep: EditText = findViewbyId(R.id.edtCep)
+        val edtNome: EditText = findViewById(R.id.edtNome)
+        val edtTelefone: EditText = findViewById(R.id.edtTelefone)
+        val edtEndereco: EditText = findViewById(R.id.edtEndereco)
+        val edtCep: EditText = findViewById(R.id.edtCEP)
         val edtBairro: EditText = findViewById(R.id.edtBairro)
 
         // Botão para cadastrar os dados inseridos nos campos de texto
-        val btnCadastrar: Button = findViewById(R.id.btnConfirmar)
+        val btnCadastrar: Button = findViewById(R.id.btnCadastrar)
 
         // Método para cadastrar os dados no banco, assim que o botão for clicado
         btnCadastrar.setOnClickListener{
