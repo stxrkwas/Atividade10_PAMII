@@ -1,11 +1,10 @@
 package com.example.atividade10
 
 import android.os.Bundle
+import android.content.Intent
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.widget.Button
-import androidx.widget.EditText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -49,9 +50,10 @@ class MainActivity : ComponentActivity() {
         val edtTelefone: EditText = findViewbyId(R.id.edtTelefone)
         val edtEndereco: EditText = findViewbyId(R.id.edtEndereco)
         val edtCep: EditText = findViewbyId(R.id.edtCep)
+        val edtBairro: EditText = findViewById(R.id.edtBairro)
 
         // Botão para cadastrar os dados inseridos nos campos de texto
-        val btnCadastrar: Button = findViewById(R.id.btnCadastrar)
+        val btnCadastrar: Button = findViewById(R.id.btnConfirmar)
 
         // Método para cadastrar os dados no banco, assim que o botão for clicado
         btnCadastrar.setOnClickListener{

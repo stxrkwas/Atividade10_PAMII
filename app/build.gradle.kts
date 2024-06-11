@@ -51,6 +51,7 @@ android {
 
 dependencies {
 
+    implementation (libs.androidx.core:core-ktx:1.7.0)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -62,6 +63,7 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.room.compiler)
     implementation(libs.firebase.vertexai)
+    implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
